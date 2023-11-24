@@ -15,7 +15,7 @@ public class Principal {
     @Autowired
     RepositorioEntradas repo;
 
-    //Método principal
+    //Método de la página principal en la que vamos a poner los enlaces a las distintas partes del proyecto
     @GetMapping({"/", "/index", "/index.html"})
     public String paginaInicial(Model model){
         model.addAttribute("listaEntradas", repo.findAll());
@@ -23,18 +23,21 @@ public class Principal {
         return "index";
     }
 
+    //Ejemplo de página en la que mostramos el mapa de Google con la ubicación de la empresa
     @GetMapping("/ubicacion")
     public String paginaUbicacion(Model model){
         return "ubicacion";
     }
 
-    //Este va a ser el listado con las entradas para tener enlaces a modificar y eliminar
+    //CRUD: Este va a ser el listado con las entradas para tener enlaces a modificar y eliminar
     @GetMapping("/entradas")
     public String listarEntradas(Model model){
         //Añado la lista completa de entradas para que la vista las muestre
         model.addAttribute("lista", repo.findAll());
         return "listadocrud";
     }
+
+
     @GetMapping("/entradas/eliminar/{id}")
     public String eliminar(@PathVariable long id){
         repo.deleteById(id);
