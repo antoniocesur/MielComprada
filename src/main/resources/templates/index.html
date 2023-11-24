@@ -3,14 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <title>Superaplicación de la Miel (comprada)</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 <body>
-    <h1 th:text="'Hola ' + ${nombre}">¡Hola Mundo!</h1>
+    <div class="container">
+        <h1>Listado de entradas de miel</h1>
 
-    <div th:each="palabra:${lista}">
-        <p th:text="${palabra}"></p>
+        <div th:each="entrada:${listaEntradas}">
+            <div class="row">
+                <div class="col" th:text="${entrada.paraje}"></div>
+                <div class="col" th:text="${entrada.fecha}"></div>
+                <div class="col" th:text="${entrada.flor}"></div>
+                <div class="col" th:text="${entrada.lote}"></div>
+            </div>
+
+        </div>
     </div>
 
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 </html>
